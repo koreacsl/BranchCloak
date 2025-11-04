@@ -37,7 +37,7 @@ Even if an attacker probes the PHT, the randomized state reveals no information 
 
 ---
 
-## How to
+## 🛠️ How to
 
 A quick guide to the two top-level experiment folders in this repository.
 
