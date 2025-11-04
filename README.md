@@ -36,11 +36,11 @@ Even if an attacker probes the PHT, the randomized state reveals no information 
 - **Formal probabilistic and information-theoretic proof** of *perfect security* (mutual information = 0).  
 - **Customized GCC compiler extension** supporting directives:
 
-  [[[c
+  ```c
   SECURE_start:
       if (secret) { ... }
   SECURE_end:
-  ]]]
+  ```
 
   → automatically inserts two aligned *r-branches*.
 
