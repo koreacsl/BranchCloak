@@ -50,6 +50,7 @@ taskset -c <cpuid> ./test.out
 ```
 
 - `make safe` should produce a binary containing the inserted r-branches that obfuscate the PHT state.
+
 **🔴 IMPORTANT —** To run the original (unprotected) attack scenario, remove this code and recompile the victim binary (i.e., remove the r-branch).
 
 ```c
