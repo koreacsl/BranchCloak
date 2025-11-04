@@ -50,13 +50,12 @@ taskset -c <cpuid> ./test.out
 ```
 
 - `make safe` should produce a binary containing the inserted r-branches that obfuscate the PHT state.
-- If BranchCloak is applied in the code base, you will see a protection stub like:
+- **IMPORTANT** To run the original (unprotected) attack scenario, remove this code and recompile the victim binary (i.e., remove the r-branch):
 
 ```c
 if (rand() % 2) { asm volatile("nop;" ::: "rax", "rdx"); } /* SAFE_BRANCH */
 ```
 
-To run the original (unprotected) attack scenario, remove this code and recompile the victim binary (i.e., remove the r-branch).
 
 ---
 
