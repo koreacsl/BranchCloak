@@ -37,9 +37,6 @@ taskset -c <cpuid> ./test.out
 
 - Before running the attack, use `/utils/generate_rand.py` to generate the PHT randomization code that fixes the PHT entry state to `WT`/`ST` for the target architecture. This step ensures the attack starts from a predictable PHT initial state.
 
-<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
-
-
 
 ---
 
@@ -60,3 +57,7 @@ if (rand() % 2) { asm volatile("nop;" ::: "rax", "rdx"); } /* SAFE_BRANCH */
 ```
 
 To run the original (unprotected) attack scenario, remove this code and recompile the victim binary (i.e., remove the r-branch).
+
+---
+
+<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>

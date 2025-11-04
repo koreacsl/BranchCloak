@@ -27,10 +27,6 @@ BranchCloak neutralizes this by ensuring:
 
 Even if an attacker probes the PHT, the randomized state reveals no information about the victim’s control flow.
 
-<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
-<small><em>[2] Huo, Tianlin, et al. "Bluethunder: A 2-level directional predictor based side-channel attack against sgx." IACR Transactions on Cryptographic Hardware and Embedded Systems (2020): 321-347.</em></small>
-
-
 ---
 
 ## 📊 Evaluation
@@ -38,3 +34,9 @@ Even if an attacker probes the PHT, the randomized state reveals no information 
 - Tested on **Intel Kaby Lake, Comet Lake, Rocket Lake** CPUs  
 - Benchmarks: **OpenSSL 3.1.0**, **MbedTLS 3.1.0**, **Libgcrypt 1.9.4**  
 - Targeted secret-dependent branches (e.g., RSA modular exponentiation, ECC scalar multiplication)  
+
+---
+
+<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
+<small><em>[2] Huo, Tianlin, et al. "Bluethunder: A 2-level directional predictor based side-channel attack against sgx." IACR Transactions on Cryptographic Hardware and Embedded Systems (2020): 321-347.</em></small>
+
