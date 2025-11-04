@@ -17,21 +17,40 @@ Each library directory contains example `.c` files that include the vulnerable (
 ```
 /realworld/
   ├─ libgcrypt/
+  │   ├─ align/
+  │   ├─ raw/
   │   ├─ run.py
-  │   └─ ...
+  │   ├─ run.sh
+  │   ├─ t-ed25519
+  │   └─ t-ed25519.inp
   ├─ mbedtls/
+  │   ├─ align/
+  │   ├─ raw/
   │   ├─ run.py
-  │   └─ ...
+  │   ├─ run.sh
+  │   └─ test_suite_mpi.datax
   ├─ openssl/
+  │   ├─ align/
+  │   ├─ raw/
   │   ├─ run.py
-  │   └─ ...
+  │   ├─ run.sh
+  │   └─ bntest
   ├─ libgcrypt_ec.c
   ├─ mbedtls_bignum.c
   └─ openssl_bn_exp.c
 ```
 
-- Each `.c` contains a secret-dependent branch in realworld applications targeted by BranchCloak.
-- Each `run.py` automates compile/run/perf collection for that library’s example.
+- Each library folder (`libgcrypt/`, `mbedtls/`, `openssl/`) contains two build variants:
+  - `align/` — binaries (or `.so` files) built **with BranchCloak applied** (i.e., r-branches inserted and aligned).
+  - `raw/` — original binaries (or `.so` files) **without BranchCloak** (baseline).
+- `run.sh` — shell wrapper that runs the library's test program (e.g., `t-ed25519`, `test_suite_mpi`, `bntest`) for both the raw and BranchCloak-enabled builds, collecting results for comparison.
+- `run.py` — Python harness that invokes `run.sh`, orchestrates experiments, handles `perf` collection, and aggregates / prints the measurement summary.
+- Test artifacts:
+  - `t-ed25519`, `t-ed25519.inp` (Libgcrypt)
+  - `test_suite_mpi.datax` (MbedTLS)
+  - `bntest` (OpenSSL)
+  These are the test inputs / drivers used by the `run.sh` scripts.
+- Top-level C files (`libgcrypt_ec.c`, `mbedtls_bignum.c`, `openssl_bn_exp.c`) are **example source files** that contain the vulnerable, secret-dependent branches used in the experiments.
 
 ---
 
