@@ -37,6 +37,20 @@ Even if an attacker probes the PHT, the randomized state reveals no information 
 
 ---
 
+## How to
+
+A quick guide to the two top-level experiment folders in this repository.
+
+- `pht_collision_test/` — **PoC for PHT side-channel attack and BranchCloak**
+  - A compact, pedagogical proof-of-concept that demonstrates:
+    - PHT entry collision and BranchScope-style 1-bit leakage.
+    - How BranchCloak inserts aligned r-branches to obfuscate the PHT state.
+- `realworld/` — **Real-world vulnerable crypto libraries (evaluation)**
+  - Contains prepared testbeds for: **Libgcrypt 1.9.4**, **MbedTLS 3.1.0**, and **OpenSSL 3.1.0**.
+  - Each library folder includes two build variants (`raw/` and `align/`) and automation scripts (`run.py`, `run.sh`) to compare unprotected vs BranchCloak-protected runs.
+
+---
+
 <small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
 
 <small><em>[2] Huo, Tianlin, et al. "Bluethunder: A 2-level directional predictor based side-channel attack against sgx." IACR Transactions on Cryptographic Hardware and Embedded Systems (2020): 321-347.</em></small>
