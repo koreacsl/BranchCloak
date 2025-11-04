@@ -24,7 +24,7 @@ taskset -c <cpuid> ./test.out
 
 ---
 
-## 1-bit leakage attack (BranchScope-style)
+## 1-bit leakage attack (BranchScope[1])
 
 Build and run the 1-bit leakage test:
 
@@ -37,8 +37,9 @@ taskset -c <cpuid> ./test.out
 
 - Before running the attack, use `/utils/generate_rand.py` to generate the PHT randomization code that fixes the PHT entry state to `WT`/`ST` for the target architecture. This step ensures the attack starts from a predictable PHT initial state.
 
-### BranchScope reference
-Dmitry Evtyushkin, Ryan Riley, Nael Abu‑Ghazaleh, and Dmitry Ponomarev. 2018. *BranchScope: A New Side-Channel Attack on Directional Branch Predictor*. SIGPLAN Not. 53, 2 (February 2018), 693–707. https://doi.org/10.1145/3296957.3173204
+<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
+
+
 
 ---
 

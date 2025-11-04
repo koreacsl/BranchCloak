@@ -18,7 +18,7 @@ This randomization prevents attackers from inferring the branch direction of vic
 
 ## ⚙️ Core Idea
 
-PHT-based attacks (e.g., **BranchScope**, **Bluethunder**) exploit shared branch predictor state between cores.  
+PHT-based attacks (e.g., **BranchScope[1]**, **Bluethunder[2]**) exploit shared branch predictor state between cores.  
 BranchCloak neutralizes this by ensuring:
 
 - Each **r-branch**:
@@ -27,22 +27,9 @@ BranchCloak neutralizes this by ensuring:
 
 Even if an attacker probes the PHT, the randomized state reveals no information about the victim’s control flow.
 
----
+<small><em>[1] Evtyushkin, Dmitry, et al. "Branchscope: A new side-channel attack on directional branch predictor." ACM SIGPLAN Notices 53.2 (2018): 693-707.</em></small>
+<small><em>[2] Huo, Tianlin, et al. "Bluethunder: A 2-level directional predictor based side-channel attack against sgx." IACR Transactions on Cryptographic Hardware and Embedded Systems (2020): 321-347.</em></small>
 
-## 🔬 Key Contributions
-
-- **Software-only mitigation** requiring no hardware modification.  
-- **Reverse engineering of Intel’s PHT structure** to discover that 15-bit address alignment (via `.p2align 15`) ensures collision in the same PHT entry.  
-- **Formal probabilistic and information-theoretic proof** of *perfect security* (mutual information = 0).  
-- **Customized GCC compiler extension** supporting directives:
-
-  ```c
-  SECURE_start:
-      if (secret) { ... }
-  SECURE_end:
-  ```
-
-  → automatically inserts two aligned *r-branches*.
 
 ---
 
@@ -51,22 +38,3 @@ Even if an attacker probes the PHT, the randomized state reveals no information 
 - Tested on **Intel Kaby Lake, Comet Lake, Rocket Lake** CPUs  
 - Benchmarks: **OpenSSL 3.1.0**, **MbedTLS 3.1.0**, **Libgcrypt 1.9.4**  
 - Targeted secret-dependent branches (e.g., RSA modular exponentiation, ECC scalar multiplication)  
-
----
-
-## 📚 Citation
-
-If you use BranchCloak in academic work, please cite:
-
-[[[
-@article{kim2025branchcloak,
-  title   = {BranchCloak: Mitigating Side-Channel Attacks on Directional Branch Predictors},
-  author  = {Kim, Jihoon and Jang, Hyerean and Shin, Youngjoo},
-  journal = {Electronics},
-  volume  = {14},
-  number  = {9},
-  pages   = {1758},
-  year    = {2025},
-  doi     = {10.3390/electronics14091758}
-}
-]]]
